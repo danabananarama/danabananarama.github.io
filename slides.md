@@ -1,4 +1,4 @@
-# Git init [working title]
+# Git init
 
 ## Dana Ma
 
@@ -10,7 +10,7 @@
 
 ???
 Will be introducing Git, going over some basic concepts and sharing some tips for working with Git.  
-Pitching talk at people who might have started using Git, or are thinking about using Git, to give a grounding in the Git model and hopefully get you a bit more comfortable with how it works.  
+Pitching talk at people who might have started using Git, or are thinking about using Git, to give a grounding in the Git model and hopefully get you a bit more comfortable with how it works. I remember living in fear... 
 Please jump in and ask questions. Slides will be available
 
 
@@ -21,18 +21,30 @@ Please jump in and ask questions. Slides will be available
 
 # What is Git, and why should I care?
 
-* Distributed version control system
+* **Distributed** version control system
+* Many use cases
+  * Share code
+  * Peer review via pull requests
+  * Develop features in an isolated environment using branches
 * Basic model is simple - but there is a lot to learn
-* Advantages
+* **Advantages**
   * Doing things locally => fast!
-  * Powerful for collaboration
-  * Flexible workflows
-* Disadvantages
-  * Some tradeoffs when considering organisation of repos
+  * Powerful for collaboration and facilitates many different workflows
+  * Easy to recover the past
+  * It's really nice and fun to use!
+* **Disadvantages**
   * Learning curve
+  * Often more than one way to do things
+  * Some tradeoffs when considering organisation of repos
 
 ???
-* Way of organising your work, and how you work  
+* Way of organising your work, and how you work 
+
+* Draw central repository/distributed repository
+
+* Share code - if Iw anted to look at Rahul's WANDA work, or Chunli wanted to reproduce some research work from three yers ago
+
+
 * Basic model is simple, as I hope to demonstrate  
 
 * Commits don't have to communicate with your remote server, so they are fast, and enable you to work on the go
@@ -41,28 +53,23 @@ Please jump in and ask questions. Slides will be available
 
 ---
 
-# Distributed?
-
-Some pictures should be drawn here.
-
-* Git doesn't really know the difference between the repos
-* Everyone has their own copy of the entire repo checked out 
-
----
 
 # Let's get started!
 
-`git init` to start a repo.
+`git init` to start a repo
+* All this really does is add a `.git/` folder
 
+Git conceptually stores everything as snapshots
+* A **tree** is a snapshot of the files in the repo
 
-Now we have three **trees**!
-* **tree**: snapshot of the files in the repo
-
-Our trees are:
-* **HEAD**: our 'last save point'
+We have three trees:
 * **Working Area**: all of our local changes
+  * Git doesn't know anything about what is happening here
 * **Index / Staging Area**: what's going in the next commit
+* **HEAD**: our 'last save point'
+  * Last commit that we've been working from
 
+Now let's do some stuff...
 
 ???
 * git init adds a folder '.git' which has everything git needs to make this a repo.
@@ -82,16 +89,18 @@ Our trees are:
 
 # Commits
 
-A **commit** in Git consists of:
+We save our work to git's history with **commits**.
+
+A commit consists of:
 
 * Pointer to a tree (i.e. a snapshot of the repo)
+* Pointer to a parent commit (except for initial commit)
+  * Allows us to step back through history
 * Some info about the author and timestamp
 * Commit message
-* Parent commit (except for initial commit)
 
 ???
 * Do a `git cat-file -p` to illustrate what's in a commit
-* By following the pointers, you can see exactly what is being stored in the commit
 
 ---
 
@@ -101,10 +110,11 @@ A **branch** is just a pointer to a commit.
 
 By default a repository starts off with a `master` branch, which we can think of as the 'core' or 'trunk'.
 
-**HEAD** is (usually) a pointer to the branch we have checked out.
+**HEAD** is (usually) a **ref** (i.e. a pointer) to the branch we have checked out.
 
-* Create a branch with `git branch <branch>` command 
-* Check it out (point HEAD to it) with `git checkout <branch>`
+Create a branch with `git branch <branch>` command 
+
+Check it out (point HEAD to it) with `git checkout <branch>`
 
 or use the shortcut `git checkout -b <branch>` to do both at once.
 
@@ -167,20 +177,6 @@ Git marks where the conflicts exist and we manually resolve.
 
 ---
 
-# Workflow
-
----
-
-# Authentication
-
-There are several options for authentication, at Winton we usually use either https or ssh
-
-To set up ssh:
-* Generate ssh key
-* Share public key with remote
-
----
-
 # Helpful commands
 
 * `git status` to check current state
@@ -192,10 +188,37 @@ To set up ssh:
 
 ---
 
+# Tips
+
+### Authentication
+
+There are several options for authentication, at Winton we usually use either https or ssh
+
+To set up ssh:
+* Generate ssh key ([Instructions](https://confluence.atlassian.com/bitbucketserver/creating-ssh-keys-776639788.html))
+* Share public key with remote
+
+### Keep it clean
+
+Commit everything and often - the more git knows, the more it can help you!
+
+### Create aliases for frequently used commands
+
+Can do this in git config.
+
+???
+
+There are lots of tips, but here are a few of my personal favourites...
+
+Commit messages are helpful, try and keep them meaningful
+
+---
+
 # And more...
 
-* Sources
-* Play around with it! get familiar with the concepts!
+* The [docs](https://git-scm.com/docs/) are pretty good
+* Atlassian has some nice [tutorials](https://www.atlassian.com/git/tutorials)
+* Play around with it and get familiar with the concepts
 * Feel free to ask!
 
 # Questions?
