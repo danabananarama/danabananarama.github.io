@@ -22,14 +22,19 @@ Will be introducing Git, going over some basic concepts and sharing some tips fo
 
 ---
 
-# What is Git, and why should I care?
+# What is Git?
 
 * **Distributed** version control system
 * Many use cases
-  * Share code
-  * Peer review via pull requests
+  * Share code and peer review via pull requests
+  * Easily revert to last stable version if you make mistakes
   * Develop features in an isolated environment using branches
 * Basic model is simple - but there is a lot to learn
+
+---
+
+# And why should I care?
+
 * **Advantages**
   * Doing things locally => fast!
   * Powerful for collaboration and facilitates many different workflows
@@ -41,7 +46,6 @@ Will be introducing Git, going over some basic concepts and sharing some tips fo
   * Some tradeoffs when considering organisation of repos
 
 ???
-* Way of organising your work, and how you work 
 
 * Draw central repository/distributed repository
 
