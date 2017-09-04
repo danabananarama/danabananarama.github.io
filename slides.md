@@ -9,12 +9,15 @@
  * Disclaimer: Not an expert!
 
 ???
-Will be introducing Git, going over some basic concepts and sharing some tips for working with Git.  
+
 Pitching talk at people who might have started using Git, or are thinking about using Git, to give a grounding in the Git model and hopefully get you a bit more comfortable with how it works. I remember living in fear... 
+
 Please jump in and ask questions. Slides will be available
 
+Will be introducing Git, going over some basic concepts and sharing some tips for working with Git.  
 
 * Just an enthusiast. Started out finding out how to use it efficiently, or just without wiping all of my work. While reading about it I was interested by the model and what was going on under the covers, and bit by bit I'm learning more and more about Git as I work with it.
+
 * I have never used Source Tree
 
 ---
@@ -44,11 +47,9 @@ Please jump in and ask questions. Slides will be available
 
 * Share code - if Iw anted to look at Rahul's WANDA work, or Chunli wanted to reproduce some research work from three yers ago
 
-
 * Basic model is simple, as I hope to demonstrate  
 
 * Commits don't have to communicate with your remote server, so they are fast, and enable you to work on the go
-* Simple branching model helps you organise your work, collaborate with team, lots of tools to help
 * Flexibility of model allows teams to use whichever workflow suits them best
 
 ---
@@ -83,13 +84,14 @@ Now let's do some stuff...
   3. `git add` -> HEAD at initial, working area and index have file
   4. Add a line to the file -> HEAD is at initial commit, index has first line, working area has second line.
   5. `git commit` -> HEAD and index at commit, working area ahead
-  6. commit the last thing
 
 ---
 
 # Commits
 
 We save our work to git's history with **commits**.
+
+`git commit -m <message>` to add a commit of all changes in the index (staging area)
 
 A commit consists of:
 
@@ -110,7 +112,7 @@ A **branch** is just a pointer to a commit.
 
 By default a repository starts off with a `master` branch, which we can think of as the 'core' or 'trunk'.
 
-**HEAD** is (usually) a **ref** (i.e. a pointer) to the branch we have checked out.
+**HEAD** is (usually) a **ref** (i.e. a pointer) to the branch we have checked out. We can think of this as the branch we're currently 'in'.
 
 Create a branch with `git branch <branch>` command 
 
@@ -120,6 +122,7 @@ or use the shortcut `git checkout -b <branch>` to do both at once.
 
 ???
 * Sticky note to denote master and another one for HEAD
+* Commit and move the note
 * Create a branch - add a sticky note
 * Check it out - so move HEAD
 * `git branch -r`
@@ -132,13 +135,13 @@ or use the shortcut `git checkout -b <branch>` to do both at once.
 We can think of a **remote** as any other instance of the repository which lives somewhere else.
 
 Typically we have a special remote called **origin**
-* At Winton this would be Stash/Bitbucket
+* At Winton this would be hosted on Bitbucket
 
-`git push` to push (check in) our changes into the remote
+`git push` to push our changes into the remote
 
 e.g. `git push origin master`
 
-`git pull` to pull (check out) updates from the remote
+`git pull` to pull updates from the remote
 
 Both of these operations apply to the entire tree - you can't e.g. pull a single file
 
@@ -146,7 +149,9 @@ Branches can be set up to **track** the remote, i.e. establish a link.
 
 ???
 `origin` is again only special by convention
+
 `git remote -v` lists remotes
+
 Also has commands to add or modify remotes, but typically after setting up your remote you shouldn't need to touch it again.
 
 Demonstrate by setting the remote and pushing to it
@@ -173,7 +178,27 @@ Git marks where the conflicts exist and we manually resolve.
 * Push the branch to origin and master too
 
 * I usually manually resolve my merge conflicts...
-* check the merge conflict resolution tool
+
+* Demonstrate merge conflict
+
+---
+
+# Forking
+
+Sometimes you may want to contribute to a repository which you don't have permission to write to. In this case, you can **fork** the repository.
+
+Forking sets up your own remote copy of the repository. When working with a fork, you'll generally have two remotes:
+
+* `origin` - your remote copy of the repository
+* `upstream` - the original copy of the repository
+
+You can then pull updates from `upstream` (the original repository), and push your changes to `origin`.
+
+When your changes are ready to be reviewed, you can set up a pull request into the original repository.
+
+???
+
+Draw a picture of the fork
 
 ---
 
@@ -198,19 +223,17 @@ To set up ssh:
 * Generate ssh key ([Instructions](https://confluence.atlassian.com/bitbucketserver/creating-ssh-keys-776639788.html))
 * Share public key with remote
 
+---
+
+# Tips
+
 ### Keep it clean
 
-Commit everything and often - the more git knows, the more it can help you!
+Commit everything and often - the more git knows, the more it can help you! Also you will make more friends with meaningful commit messages.
 
 ### Create aliases for frequently used commands
 
 Can do this in git config.
-
-???
-
-There are lots of tips, but here are a few of my personal favourites...
-
-Commit messages are helpful, try and keep them meaningful
 
 ---
 
@@ -218,6 +241,7 @@ Commit messages are helpful, try and keep them meaningful
 
 * The [docs](https://git-scm.com/docs/) are pretty good
 * Atlassian has some nice [tutorials](https://www.atlassian.com/git/tutorials)
+* Google, StackOverflow, etc
 * Play around with it and get familiar with the concepts
 * Feel free to ask!
 
