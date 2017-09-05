@@ -1,12 +1,8 @@
+name: title
+
 # Git init
 
 ## Dana Ma
-
-### About me
-
-* Worked in Tech for the last 3 years
-* Started using Git when I joined Winton, about a year ago
- * Disclaimer: Not an expert!
 
 ???
 
